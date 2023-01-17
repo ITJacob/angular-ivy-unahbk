@@ -8,9 +8,11 @@ import { Component, VERSION } from '@angular/core';
 export class SettingComponent {
   async convertFile(e) {
     const file = e.files[0];
+    if (!file) return;
     const result = await this.readFile(file);
     const lines = (result as string).split('\r\n');
-    const skills = this.getSkills(lines);
+    const { skills, header } = this.getSkills(lines);
+    console.log(header);
     console.log(skills);
   }
 
@@ -25,16 +27,22 @@ export class SettingComponent {
   }
 
   getSkills(lines) {
-    const header: any[] = lines[0]
+    const header = {};
+    const keys: any[] = lines[0]
       .split(',')
       .filter((l) => l)
-      .map((l) => l.split('-')[1]);
+      .map((l) => {
+        const [v, k] = l.split('-');
+        header[k] = v;
+        return k;
+      });
     const content: any[] = lines.slice(1).map((l) => l.split(','));
-    return content.map((c) =>
-      header.reduce((pre, cur, i) => {
+    const skills = content.map((c) =>
+      keys.reduce((pre, cur, i) => {
         if (cur) pre[cur] = c[i];
         return pre;
       }, {})
     );
+    return { skills, header };
   }
 }
