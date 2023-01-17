@@ -1,0 +1,10 @@
+<div>
+  总数：{{ skills.length }}
+  <button (click)="random()">随机</button>
+</div>
+<div>
+  结果：
+  <ng-container *ngFor="let item of selected; let index = index">
+    {{ item?.name }}
+  </ng-container>
+</div>
