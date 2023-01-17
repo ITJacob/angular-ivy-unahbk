@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { SettingService } from './setting.service';
 
 @Component({
   selector: 'app-setting',
@@ -6,14 +7,15 @@ import { Component, VERSION } from '@angular/core';
   styleUrls: ['./setting.component.css'],
 })
 export class SettingComponent {
+  constructor(private service: SettingService) {}
+
   async convertFile(e) {
     const file = e.files[0];
     if (!file) return;
     const result = await this.readFile(file);
     const lines = (result as string).split('\r\n');
     const { skills, header } = this.getSkills(lines);
-    console.log(header);
-    console.log(skills);
+    this.service.setSkills(skills);
   }
 
   readFile(file) {
