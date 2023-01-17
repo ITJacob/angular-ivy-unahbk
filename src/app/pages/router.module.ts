@@ -5,6 +5,7 @@ import { HelloComponent } from './hello/hello.component';
 import { SettingService } from './setting/setting.service';
 import { CommonModule } from '@angular/common';
 import { SkillsComponent } from './skills/skills.component';
+import { HeroComponent } from './hero/hero.component';
 
 const routes: Routes = [
   { path: '', component: HelloComponent },
@@ -19,7 +20,12 @@ const routes: Routes = [
       useHash: false,
     }),
   ],
-  declarations: [SettingComponent, HelloComponent, SkillsComponent],
+  declarations: [
+    SettingComponent,
+    HelloComponent,
+    SkillsComponent,
+    HeroComponent,
+  ],
   providers: [SettingService],
   exports: [RouterModule],
 })
