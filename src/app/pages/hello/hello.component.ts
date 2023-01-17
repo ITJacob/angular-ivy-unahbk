@@ -8,12 +8,23 @@ import { SettingService } from '../setting/setting.service';
   styles: [`h1 { font-family: Lato; }`],
 })
 export class HelloComponent implements OnInit {
-  skills: Observable<any>;
-  constructor(private settingService: SettingService){}
-  
+  skills = [];
+  selected = [];
+  constructor(private settingService: SettingService) {}
+
   ngOnInit(): void {
-    this.skills = this.settingService.getSkills();
+    this.settingService.getSkills().subscribe((res) => {
+      this.skills = res;
+    });
   }
 
-
+  random() {
+    this.selected = [];
+    let i = 5;
+    while (i) {
+      const index = Math.floor(Math.random() * this.skills.length);
+      this.selected.push(this.skills[index]);
+      i--;
+    }
+  }
 }

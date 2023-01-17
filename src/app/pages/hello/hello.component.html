@@ -1,3 +1,11 @@
-<h1>Hello world!</h1>
 <div><a routerLink="/setting">设置</a></div>
-<div>{{skills | async}}</div>
+<div>
+  总数：{{ skills.length }}
+  <button (click)="random()">随机</button>
+</div>
+<div>
+  结果：
+  <ng-container *ngFor="let item of selected; let index = index">
+    {{ item?.name }}
+  </ng-container>
+</div>

@@ -38,7 +38,10 @@ export class SettingComponent {
         header[k] = v;
         return k;
       });
-    const content: any[] = lines.slice(1).map((l) => l.split(','));
+    const content: any[] = lines
+      .slice(1)
+      .map((l) => l.split(','))
+      .filter((l) => l[0]);
     const skills = content.map((c) =>
       keys.reduce((pre, cur, i) => {
         if (cur) pre[cur] = c[i];

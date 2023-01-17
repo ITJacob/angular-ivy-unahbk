@@ -1,19 +1,23 @@
-import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class SettingService {
-
-  private skills = new Subject();
+  private skills: BehaviorSubject<any[]>;
 
   constructor() {
+    const s = localStorage.getItem('skills');
+    const preSkills = s ? JSON.parse(s) : [];
+
+    this.skills = new BehaviorSubject(preSkills);
   }
 
   getSkills() {
     return this.skills;
   }
 
-  setSkills(skill) {
-    this.skills.next(skill);
+  setSkills(skills) {
+    localStorage.setItem('skills', JSON.stringify(skills));
+    this.skills.next(skills);
   }
 }
