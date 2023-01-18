@@ -17,6 +17,10 @@ export class SkillsComponent implements OnInit {
     });
   }
 
+  active(skill: any) {
+    console.log('准备施法：', skill.name);
+  }
+
   random() {
     this.selected = [];
     let i = 5;

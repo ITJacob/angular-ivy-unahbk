@@ -7,7 +7,7 @@
   <div>
     随机结果：
     <ng-container *ngFor="let item of selected; let index = index">
-      {{ item?.name }}
+      <button (click)="active(item)">{{ item?.name }}</button>&nbsp;
     </ng-container>
   </div>
 </section>

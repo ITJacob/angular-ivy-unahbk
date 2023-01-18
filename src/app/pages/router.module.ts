@@ -6,6 +6,8 @@ import { SettingService } from './setting/setting.service';
 import { CommonModule } from '@angular/common';
 import { SkillsComponent } from './skills/skills.component';
 import { HeroComponent } from './hero/hero.component';
+import { PackageComponent } from './package/package.component';
+import { ArmsComponent } from './arms/arms.component';
 
 const routes: Routes = [
   { path: '', component: HelloComponent },
@@ -25,6 +27,8 @@ const routes: Routes = [
     HelloComponent,
     SkillsComponent,
     HeroComponent,
+    PackageComponent,
+    ArmsComponent,
   ],
   providers: [SettingService],
   exports: [RouterModule],

@@ -6,26 +6,11 @@
   名称：{{ hero.name }}<br />
   血量：{{ hero.hp }}<br />
   能量：{{ hero.mp }}<br />
-  属性：
-  <ul>
-    <li>力量：{{ hero.strength }}</li>
-    <li>敏捷：{{ hero.dexterity }}</li>
-    <li>耐力：{{ hero.vitality }}</li>
-    <li>智力：{{ hero.intelligence }}</li>
-  </ul>
+  属性：<br />&nbsp;&nbsp;
+  <span>力量：{{ hero.strength }}&nbsp;</span>
+  <span>敏捷：{{ hero.dexterity }}&nbsp;</span>
+  <span>耐力：{{ hero.vitality }}&nbsp;</span>
+  <span>智力：{{ hero.intelligence }}</span>
+  <br />
   天赋：{{ hero.talent }}
 </div>
-
-<section>
-  <h3>装备</h3>
-  <ul>
-    <li *ngFor="let arm of arms">{{ arm.name }}</li>
-  </ul>
-</section>
-
-<section>
-  <h3>背包</h3>
-  <ul id="package">
-    <li *ngFor="let pkg of package">{{ pkg.name }}</li>
-  </ul>
-</section>
