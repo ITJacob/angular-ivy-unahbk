@@ -25,5 +25,6 @@ export class HeroComponent implements OnInit {
       vitality,
       intelligence,
     });
+    console.log(this.hero);
   }
 }
