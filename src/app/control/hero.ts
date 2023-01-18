@@ -1,5 +1,5 @@
 export class Hero {
-  hp = 300; // 血量
+  hp = 100; // 血量
   mp = 0; // 能量
   mpSpeed = 1; // 能量汲取速度
   attack = 0; // 攻击力
@@ -29,12 +29,13 @@ export class Hero {
   }
 
   init() {
-    this.hp += this.vitality * 10;
-    this.mpSpeed += this.intelligence * 0.2;
-    this.attack += this.strength * 5;
-    this.attackSpeed += this.dexterity * 0.2;
-    this.physicalDefense += this.vitality * 2;
-    this.magicDefense += this.intelligence * 5;
+    this.hp += this.vitality * 5;
+    this.mpSpeed += this.intelligence * 0.05;
+    this.attack += this.strength * 0.5;
+    this.critRate += this.dexterity * 0.01;
+    this.attackSpeed += this.dexterity * 0.1;
+    // this.physicalDefense += this.vitality * 2;
+    this.magicDefense += this.intelligence * 0.2;
   }
 
   armCheck() {
