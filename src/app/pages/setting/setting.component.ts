@@ -15,6 +15,7 @@ export class SettingComponent {
     const result = await this.readFile(file);
     const lines = (result as string).split('\r\n');
     const { skills, header } = this.getSkills(lines);
+    console.log(header);
     this.service.setSkills(skills);
   }
 
