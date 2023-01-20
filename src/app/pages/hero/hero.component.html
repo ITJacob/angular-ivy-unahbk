@@ -3,19 +3,19 @@
   <!-- <button (click)="random()">随机</button> -->
 </div>
 <div>
-  名称：{{ hero.name }}<br />
+  名称：{{ hero.attribute?.name }}<br />
   属性：<br />&nbsp;&nbsp;
-  <span>力量：{{ hero.strength }}&nbsp;</span>
-  <span>敏捷：{{ hero.dexterity }}&nbsp;</span>
-  <span>耐力：{{ hero.vitality }}&nbsp;</span>
-  <span>智力：{{ hero.intelligence }}</span>
+  <span>力量：{{ hero.attribute?.strength }}&nbsp;</span>
+  <span>敏捷：{{ hero.attribute?.dexterity }}&nbsp;</span>
+  <span>耐力：{{ hero.attribute?.vitality }}&nbsp;</span>
+  <span>智力：{{ hero.attribute?.intelligence }}</span>
   <br />
-  天赋：{{ hero.talent }}
+  <!-- 天赋：{{ hero.talent }} -->
 </div>
 <div>---战斗---</div>
 <div>
   血量：{{ hero.hp }}<br />
   能量：{{ hero.mp }}<br />
-  Buff：{{ hero.buffs }}<br />
+  <!-- Buff：{{ hero.buffs }}<br /> -->
   <!-- 其他：{{ hero | json}} -->
 </div>

@@ -3,7 +3,7 @@ export const random = function (
   total: number,
   max: number = total
 ) {
-  let arr = new Array(len);
+  let arr = new Array<number>(len);
   let sum = 0;
   do {
     // get some random numbers

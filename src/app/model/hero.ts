@@ -10,36 +10,30 @@ export class Hero {
   attackSpeed = 0; // 出手速度
   physicalDefense = 0; // 物理防御
   magicDefense = 0; // 魔法防御
-  attributeResistance: { type: string; value: number }[] = []; // 属性抵抗
+  resistance: { type: string; value: number }[] = []; // 属性抗性
 
-  // 属性：
-  name: string; // 名称
-  desc: string; // 描述
-  strength: number; // 力量
-  dexterity: number; // 敏捷
-  intelligence: number; // 智力
-  vitality: number; // 耐力
+  attribute: {
+    // 属性：
+    name: string; // 名称
+    desc: string; // 描述
+    strength: number; // 力量
+    dexterity: number; // 敏捷
+    intelligence: number; // 智力
+    vitality: number; // 耐力
+  };
 
-  // 天赋
-  talent: Talent;
-
-  constructor(params: any) {
-    Object.assign(this, params);
+  constructor(params: Hero['attribute']) {
+    this.attribute = params;
     this.init();
-    this.initTalent(params.talentId);
   }
 
   init() {
-    this.hp += this.vitality * 5;
-    this.mpSpeed += this.intelligence * 0.05;
-    this.attack += this.strength * 0.5;
-    this.critRate += this.dexterity * 0.01;
-    this.attackSpeed += this.dexterity * 0.1;
-    // this.physicalDefense += this.vitality * 2;
-    this.magicDefense += this.intelligence * 0.2;
-  }
-
-  initTalent(id: string) {
-    this.talent = new Talent(id);
+    const { strength, dexterity, intelligence, vitality } = this.attribute;
+    this.hp += vitality * 5;
+    this.mpSpeed += intelligence * 0.05;
+    this.attack += strength * 0.5;
+    this.critRate += dexterity * 0.01;
+    this.attackSpeed += dexterity * 0.1;
+    this.magicDefense += intelligence * 0.2;
   }
 }
