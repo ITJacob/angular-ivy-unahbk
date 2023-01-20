@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../../control/hero';
+import { Hero } from '../../model/hero';
 import { random } from '../../utils/tools';
 
 @Component({
@@ -9,8 +9,6 @@ import { random } from '../../utils/tools';
 })
 export class HeroComponent implements OnInit {
   hero: any = {};
-  arms: any[] = [];
-  package: any[] = [];
 
   constructor() {}
 

@@ -1,3 +1,5 @@
+import { Talent } from './talent';
+
 export class Hero {
   hp = 100; // 血量
   mp = 0; // 能量
@@ -10,22 +12,21 @@ export class Hero {
   magicDefense = 0; // 魔法防御
   attributeResistance: { type: string; value: number }[] = []; // 属性抵抗
 
-  arms: ((h: Hero) => void)[] = []; // 装备
-  buffs: ((h: Hero) => void)[] = []; // 状态
-
   // 属性：
   name: string; // 名称
+  desc: string; // 描述
   strength: number; // 力量
   dexterity: number; // 敏捷
   intelligence: number; // 智力
   vitality: number; // 耐力
 
   // 天赋
-  talent: any;
+  talent: Talent;
 
   constructor(params: any) {
     Object.assign(this, params);
     this.init();
+    this.initTalent(params.talentId);
   }
 
   init() {
@@ -38,11 +39,7 @@ export class Hero {
     this.magicDefense += this.intelligence * 0.2;
   }
 
-  armCheck() {
-    this.arms.forEach((arm) => arm(this));
-  }
-
-  buffCheck() {
-    this.buffs.forEach((buff) => buff(this));
+  initTalent(id: string) {
+    this.talent = new Talent(id);
   }
 }
