@@ -34,5 +34,16 @@ export class SettingComponent {
     this.service.setConfig('skill', skills);
   }
 
-  showSkillsEnum(lines: string[][]) {}
+  showSkillsEnum(lines: string[][]) {
+    const { header, content, desc } = getHeader(lines);
+    const skillEnum = {};
+    content.forEach((line) => {
+      line.forEach((item, index) => {
+        if (!item) return;
+        const key = header[index];
+        skillEnum[key] = skillEnum[key] ? skillEnum[key].concat(item) : [item];
+      });
+    });
+    console.log(skillEnum);
+  }
 }
