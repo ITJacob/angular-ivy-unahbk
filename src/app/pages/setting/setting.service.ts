@@ -3,21 +3,29 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class SettingService {
-  private skills: BehaviorSubject<any[]>;
+  private setting = {
+    skill: new BehaviorSubject([]),
+    hero: new BehaviorSubject([]),
+    arm: new BehaviorSubject([]),
+    item: new BehaviorSubject([]),
+  };
 
   constructor() {
-    const s = localStorage.getItem('skills');
-    const preSkills = s ? JSON.parse(s) : [];
-
-    this.skills = new BehaviorSubject(preSkills);
+    Object.keys(this.setting).forEach((key) => {
+      const s = localStorage.getItem(key);
+      if (s) {
+        const pre = JSON.parse(s);
+        this.setting[key].next(pre);
+      }
+    });
   }
 
-  getSkills() {
-    return this.skills;
+  getConfig(key: keyof SettingService['setting']) {
+    return this.setting[key];
   }
 
-  setSkills(skills) {
-    localStorage.setItem('skills', JSON.stringify(skills));
-    this.skills.next(skills);
+  setConfig(key: keyof SettingService['setting'], cfg: any) {
+    localStorage.setItem(key, JSON.stringify(cfg));
+    this.setting[key].next(cfg);
   }
 }

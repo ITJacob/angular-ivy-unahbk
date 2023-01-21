@@ -1,3 +1,16 @@
 <div><a routerLink="/">返回</a></div>
-<label for="skill">技能：</label>
-<input id="skill" type="file" (change)="convertFile(input)" #input />
+<div>
+  <label for="skill">技能：</label>
+  <input id="skill" type="file" (change)="convertFile('skill', skill)" #skill />
+</div>
+<br />
+<div>--------临时使用：方便csv转换代码-------</div>
+<div>
+  <label for="skillEnum">技能枚举：</label>
+  <input
+    id="skillEnum"
+    type="file"
+    (change)="convertFile('skillEnum', skillEnum)"
+    #skillEnum
+  />
+</div>

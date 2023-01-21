@@ -12,7 +12,7 @@ export class SkillsComponent implements OnInit {
   constructor(private settingService: SettingService) {}
 
   ngOnInit(): void {
-    this.settingService.getSkills().subscribe((res) => {
+    this.settingService.getConfig('skill').subscribe((res) => {
       this.skills = res;
     });
   }
