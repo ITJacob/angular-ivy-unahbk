@@ -12,6 +12,7 @@ export class HeroControl {
   skills: Skill[] = [];
   arms: Arm[] = []; // ((h: HeroControl) => void)[] = []; // 装备
   buffs: Buff[] = []; // ((h: HeroControl) => void)[] = []; // 状态
+  teamIndex: number; // 队伍站位
 
   constructor(params: any) {
     this.hero = new Hero(params);
