@@ -1,6 +1,6 @@
-import { Talent } from './talent';
+import { IInfo, IInfoConstructor } from '../interface/IInfo';
 
-export class Hero {
+export class Hero implements IInfo {
   hp = 100; // 血量
   mp = 0; // 能量
   mpSpeed = 1; // 能量汲取速度
@@ -12,7 +12,7 @@ export class Hero {
   magicDefense = 0; // 魔法防御
   resistance: { type: string; value: number }[] = []; // 属性抗性
 
-  attribute: {
+  info: {
     // 属性：
     name: string; // 名称
     desc: string; // 描述
@@ -20,15 +20,16 @@ export class Hero {
     dexterity: number; // 敏捷
     intelligence: number; // 智力
     vitality: number; // 耐力
+    talentId: string; // 天赋id
   };
 
-  constructor(params: Hero['attribute']) {
-    this.attribute = params;
+  constructor(params: Hero['info']) {
+    this.info = params;
     this.init();
   }
 
   init() {
-    const { strength, dexterity, intelligence, vitality } = this.attribute;
+    const { strength, dexterity, intelligence, vitality } = this.info;
     this.hp += vitality * 5;
     this.mpSpeed += intelligence * 0.05;
     this.attack += strength * 0.5;
