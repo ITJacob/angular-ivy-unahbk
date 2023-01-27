@@ -25,6 +25,7 @@ export class HeroControl {
 
   armCheck() {
     // this.arms.forEach((arm) => arm(this));
+    return 0;
   }
 
   buffCheck() {
