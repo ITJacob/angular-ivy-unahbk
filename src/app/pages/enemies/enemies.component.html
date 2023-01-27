@@ -1,0 +1,5 @@
+<h1>敌方</h1>
+<div *ngFor="let item of enemies; let index = index">
+  <button (click)="setTarget(item)">{{ item?.hero.attribute.name }}</button>
+  &nbsp;
+</div>
