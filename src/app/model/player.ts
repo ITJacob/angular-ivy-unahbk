@@ -1,5 +1,8 @@
-interface IHeroSetting {
+import { Hero } from "./hero";
+
+interface ISetting {
   heroId: string;
+  heroInfo: Hero['info'];
   level: number;
   teamPosition: number;
   skillIds: string[];
@@ -7,9 +10,8 @@ interface IHeroSetting {
 }
 
 export class Player {
-  heroSettings: IHeroSetting[];
+  heroSettings: ISetting[];
   // TODO: package...
-  constructor(param: any) {
-    Object.assign(this, param);
+  constructor(private id: string) {
   }
 }
