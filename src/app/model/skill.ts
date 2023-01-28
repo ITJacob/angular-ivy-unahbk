@@ -1,6 +1,6 @@
-import { IInfo } from '../interface/IInfo';
+import { IModel } from '../interface/IModel';
 
-export class Skill implements IInfo {
+export class Skill implements IModel {
   info: {
     chant: any; // "吟唱"
     conditions: any; // "施法条件"

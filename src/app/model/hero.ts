@@ -1,6 +1,6 @@
-import { IInfo, IInfoConstructor } from '../interface/IInfo';
+import { IModel } from '../interface/IModel';
 
-export class Hero implements IInfo {
+export class Hero implements IModel {
   hp = 100; // 血量
   mp = 0; // 能量
   mpSpeed = 1; // 能量汲取速度

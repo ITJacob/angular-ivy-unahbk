@@ -1,5 +1,5 @@
-import { IInfo } from '../interface/IInfo';
+import { IModel } from '../interface/IModel';
 
-export class Buff implements IInfo {
+export class Buff implements IModel {
   info: { [key: string]: string | number };
 }
