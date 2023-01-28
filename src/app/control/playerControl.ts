@@ -2,9 +2,15 @@ import { Player } from '../model/player';
 import { HeroControl } from './heroControl';
 
 export class PlayerControl {
-  heros: HeroControl[];
+  heroControls: HeroControl[] = [];
 
   constructor(player: Player) {
-    this.heros = new HeroControl(player);
+    this.init(player);
+  }
+
+  init(player: Player) {
+    player.settings.forEach(({heroInfo, skillInfos, armInfos}) => {
+      this.heroControls.push(new HeroControl(heroInfo, skillInfos, armInfos));
+    })
   }
 }

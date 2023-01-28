@@ -14,9 +14,11 @@ export class HeroControl {
   buffs: Buff[] = []; // ((h: HeroControl) => void)[] = []; // 状态
   teamIndex: number; // 队伍站位
 
-  constructor(params: any) {
-    this.hero = new Hero(params);
-    this.initTalent(params.talentId);
+  constructor(hero: Hero['info'], skills:Skill['info'][], arms:Arm['info'][] ) {
+    this.hero = new Hero(hero);
+    this.initTalent(hero.talentId);
+    this.skills = skills.map(s => new Skill(s));
+    this.arms = arms.map(a => new Arm(a));
   }
 
   initTalent(id: string) {
