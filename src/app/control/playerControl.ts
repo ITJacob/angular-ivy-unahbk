@@ -1,4 +1,3 @@
-import { Hero } from '../model/hero';
 import { Player } from '../model/player';
 import { HeroControl } from './heroControl';
 
