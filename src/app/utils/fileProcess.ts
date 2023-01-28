@@ -18,6 +18,7 @@ export function readFile(file: Blob) {
 }
 
 export function getHeader(lines: string[][]) {
+  // 专门处理表头是 中文=英文 的结构
   const desc = {};
   const header: string[] = lines[0].map((col) => {
     const [v, k] = col.split('-');

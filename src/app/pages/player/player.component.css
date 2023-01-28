@@ -1,0 +1,6 @@
+h1 { font-family: Lato; }
+
+.hero-card {
+    display: inline-block;
+    margin: 10px;
+}

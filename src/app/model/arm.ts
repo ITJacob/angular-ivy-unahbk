@@ -1,7 +1,7 @@
 import { IModel } from '../interface/IModel';
 
 export class Arm implements IModel {
-  info: { [key: string]: string | number };
+  info: { name: string };
   
   constructor(params: Arm['info']) {
     this.info = params;

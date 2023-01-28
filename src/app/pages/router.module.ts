@@ -8,7 +8,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { HeroComponent } from './hero/hero.component';
 import { PackageComponent } from './package/package.component';
 import { ArmsComponent } from './arms/arms.component';
-import { EnemiesComponent } from './enemies/enemies.component';
+import { PlayerComponent } from './player/player.component';
 
 const routes: Routes = [
   { path: '', component: HelloComponent },
@@ -24,7 +24,7 @@ const routes: Routes = [
     }),
   ],
   declarations: [
-    EnemiesComponent,
+    PlayerComponent,
     SettingComponent,
     HelloComponent,
     SkillsComponent,
