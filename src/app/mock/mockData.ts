@@ -28,7 +28,7 @@ const PLAYER_SETTING = function (_id: string) {
       level: 0,
       teamPosition: i,
       heroInfo,
-      skillInfos: [],
+      skillInfos: getSkills(5),
       armInfos: [],
     };
 
@@ -37,6 +37,16 @@ const PLAYER_SETTING = function (_id: string) {
   }
   return result;
 };
+
+function getSkills(num: number) {
+  const s = localStorage.getItem('skill');
+  let res = [];
+  if (s) {
+    const all = JSON.parse(s);
+    res = all.sort(() => 0.5 - Math.random()).slice(0, num);
+  }
+  return res;
+}
 
 const HERO: IHeroDataList = {
   hero_data_id_0001: {

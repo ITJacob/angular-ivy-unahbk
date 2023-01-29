@@ -1,13 +1,5 @@
-<section>
-  <h3>技能</h3>
-  <div>
-    技能库总数：{{ skills.length }}
-    <!-- <button (click)="random()">随机</button> -->
-  </div>
-  <div>
-    随机结果：
-    <ng-container *ngFor="let item of selected; let index = index">
-      <button (click)="active(item)">{{ item?.name }}</button>&nbsp;
-    </ng-container>
-  </div>
-</section>
+<div>
+  <ng-container *ngFor="let item of skills; let index = index">
+    <button (click)="active(item)">{{ item?.info.name }}</button>&nbsp;
+  </ng-container>
+</div>
