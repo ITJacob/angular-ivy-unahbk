@@ -1,5 +1,5 @@
 import { IModel } from '../interface/IModel';
 
-export class Buff implements IModel {
+export class Effect implements IModel {
   info: { name: string };
 }

@@ -1,3 +1,4 @@
+import { IHeroInfo } from '../interface/IInfo';
 import { IModel } from '../interface/IModel';
 
 export class Hero implements IModel {
@@ -12,18 +13,9 @@ export class Hero implements IModel {
   magicDefense = 0; // 魔法防御
   resistance: { type: string; value: number }[] = []; // 属性抗性
 
-  info: {
-    // 属性：
-    name: string; // 名称
-    desc: string; // 描述
-    strength: number; // 力量
-    dexterity: number; // 敏捷
-    intelligence: number; // 智力
-    vitality: number; // 耐力
-    talentId: string; // 天赋id
-  };
+  info: IHeroInfo;
 
-  constructor(params: Hero['info']) {
+  constructor(params: IHeroInfo) {
     this.info = params;
     this.init();
   }
