@@ -1,3 +1,4 @@
+// 长度、总数、最大值
 export const random = function (
   len: number,
   total: number,

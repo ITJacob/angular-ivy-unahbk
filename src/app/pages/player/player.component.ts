@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PlayerControl } from 'src/app/control/playerControl';
-import { Player } from 'src/app/model/player';
+import { PlayerControl } from '../../control/playerControl';
+import { Player } from '../../model/player';
 import { HeroControl } from '../../control/heroControl';
 
 @Component({
@@ -9,7 +9,7 @@ import { HeroControl } from '../../control/heroControl';
   styleUrls: ['./player.component.css'],
 })
 export class PlayerComponent implements OnInit {
-  @Input() team : string;
+  @Input() team: string;
   player: PlayerControl;
 
   ngOnInit() {

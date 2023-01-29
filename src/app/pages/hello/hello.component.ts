@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ArmsComponent } from '../arms/arms.component';
-import { HeroComponent } from '../hero/hero.component';
 import { PackageComponent } from '../package/package.component';
 import { PlayerComponent } from '../player/player.component';
-import { SkillsComponent } from '../skills/skills.component';
 
 @Component({
   selector: 'app-hello',

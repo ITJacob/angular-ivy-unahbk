@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HeroControl } from '../../control/heroControl';
 import { Hero } from '../../model/hero';
-import { random } from '../../utils/tools';
 
 @Component({
   selector: 'app-hero',
@@ -14,5 +12,4 @@ export class HeroComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
 }
