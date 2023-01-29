@@ -1,28 +1,31 @@
 import { Arm } from '../model/arm';
-import { Buff } from '../model/buff';
 import { Hero } from '../model/hero';
 import { Skill } from '../model/skill';
-import { Talent } from '../model/talent';
+import { Buff } from './buff';
 
 export class HeroControl {
   hero: Hero;
   // 天赋
-  talent: Talent;
+  // talent: Talent;
 
   skills: Skill[] = [];
   arms: Arm[] = []; // ((h: HeroControl) => void)[] = []; // 装备
   buffs: Buff[] = []; // ((h: HeroControl) => void)[] = []; // 状态
   teamIndex: number; // 队伍站位
 
-  constructor(hero: Hero['info'], skills:Skill['info'][], arms:Arm['info'][] ) {
+  constructor(
+    hero: Hero['info'],
+    skills: Skill['info'][],
+    arms: Arm['info'][]
+  ) {
     this.hero = new Hero(hero);
-    this.initTalent(hero.talentId);
-    this.skills = skills.map(s => new Skill(s));
-    this.arms = arms.map(a => new Arm(a));
+    // this.initTalent(hero.talentId);
+    this.skills = skills.map((s) => new Skill(s));
+    this.arms = arms.map((a) => new Arm(a));
   }
 
   initTalent(id: string) {
-    this.talent = new Talent(id);
+    // this.talent = new Talent(id);
   }
 
   armCheck() {

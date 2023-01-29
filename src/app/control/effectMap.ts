@@ -9,7 +9,7 @@ export type EffectAc = (
   all: [HeroControl[], HeroControl[]]
 ) => void | EffectCb;
 
-type EffectCb = (
+export type EffectCb = (
   this: Buff,
   source: HeroControl,
   target: HeroControl,

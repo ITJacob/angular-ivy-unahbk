@@ -1,3 +1,4 @@
+import { IHeroInfo } from '../interface/IInfo';
 import { ISettingData } from '../model/player';
 import { random } from '../utils/tools';
 
@@ -14,14 +15,16 @@ const PLAYER_SETTING = function (_id: string) {
   let i = 1;
   while (i < 6) {
     const [strength, dexterity, vitality, intelligence] = random(4, 10, 6);
-    const heroInfo = {
+    const heroInfo: IHeroInfo = {
       name: '英雄_' + i,
       desc: '随机介绍····',
       strength,
       dexterity,
       vitality,
       intelligence,
-      talentId: '001',
+      talent: '',
+      talentDesc: '',
+      talentMapId: '001',
     };
     const s: ISettingData = {
       level: 0,
