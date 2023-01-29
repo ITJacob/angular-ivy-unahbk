@@ -3,7 +3,7 @@
 
 // ====================基类==========================
 // info 列表类型
-export interface IInfoList<T extends IInfo> {
+export interface IInfoMap<T extends IInfo> {
   [_id: string]: T;
 }
 
@@ -23,6 +23,7 @@ export interface IValuableItem {
 
 // ====================基类 结束==========================
 
+/*
 // 游戏逻辑层面的静态常规属性，
 export interface ICommonInfo {
   version: string;
@@ -65,3 +66,4 @@ export interface IEquipmentInfo extends IInfo, IValuableItem {
 
 // 物品
 export interface IGoodsInfo extends IInfo, IValuableItem {}
+*/

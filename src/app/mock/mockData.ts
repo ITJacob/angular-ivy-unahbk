@@ -1,4 +1,3 @@
-import { IHeroDataList } from '../interface/IData';
 import { ISettingData } from '../model/player';
 import { random } from '../utils/tools';
 
@@ -48,22 +47,22 @@ function getSkills(num: number) {
   return res;
 }
 
-const HERO: IHeroDataList = {
-  hero_data_id_0001: {
-    _id: 'hero_data_id_0001',
-    heroInfoId: '',
-    skillInfoIds: [''],
-    equipmentInfoId: '',
-    goodsInfoId: '',
-  },
-  hero_data_id_0002: {
-    _id: 'hero_data_id_0002',
-    heroInfoId: '',
-    skillInfoIds: [''],
-    equipmentInfoId: '',
-    goodsInfoId: '',
-  },
-};
+// const HERO: IHeroDataList = {
+//   hero_data_id_0001: {
+//     _id: 'hero_data_id_0001',
+//     heroInfoId: '',
+//     skillInfoIds: [''],
+//     equipmentInfoId: '',
+//     goodsInfoId: '',
+//   },
+//   hero_data_id_0002: {
+//     _id: 'hero_data_id_0002',
+//     heroInfoId: '',
+//     skillInfoIds: [''],
+//     equipmentInfoId: '',
+//     goodsInfoId: '',
+//   },
+// };
 
 const data = {
   // HERO,
