@@ -1,9 +1,9 @@
-import { getData } from "../mock/mockData";
-import { Arm } from "./arm";
-import { Hero } from "./hero";
-import { Skill } from "./skill";
+import { getData } from '../mock/mockData';
+import { Arm } from './arm';
+import { Hero } from './hero';
+import { Skill } from './skill';
 
-export interface ISetting {
+export interface ISettingData {
   level: number;
   teamPosition: number;
   heroInfo: Hero['info'];
@@ -12,12 +12,11 @@ export interface ISetting {
 }
 
 export class Player {
-  settings: ISetting[];
+  settings: ISettingData[];
   // TODO: package...
-  constructor(private id: string) {
-  }
+  constructor(private id: string) {}
 
-  async init() {
+  async fetch() {
     this.settings = await getData('PLAYER_SETTING', this.id);
   }
 }
