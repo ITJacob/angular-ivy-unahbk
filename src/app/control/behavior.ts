@@ -1,15 +1,14 @@
-import { Skill } from "../model/skill";
-import { Effect, EffectMap } from "./effectMap";
-import { HeroControl } from "./heroControl";
+import { Skill } from '../model/skill';
+import { EffectFunc, EffectMap } from './effectMap';
+import { HeroControl } from './heroControl';
 
 export class Behavior {
   skill: Skill;
-  effects: Effect[];
-  constructor(public actor: HeroControl) {
-  }
+  effects: EffectFunc[];
+  constructor(public actor: HeroControl) {}
 
   checkActive(skill: Skill) {
-    // TODO: 
+    // TODO:
     // check 英雄当前状态，eg: 晕眩、沉默、吟唱，
     // check 技能的条件是否满足，eg: 装备武器、存在尸体
     return this.actor.hero.mp > skill.info.mpCost;
@@ -28,7 +27,7 @@ export class Behavior {
       return false;
     }
 
-    this.effects.forEach(effect => {
+    this.effects.forEach((effect) => {
       effect.call(this.skill, this.actor, target, all);
     });
   }

@@ -2,7 +2,7 @@ import { Skill } from '../model/skill';
 import { Buff } from './buff';
 import { HeroControl } from './heroControl';
 
-export type EffectAc = (
+export type EffectFunc = (
   this: Skill,
   source: HeroControl,
   target: HeroControl,
@@ -17,7 +17,7 @@ export type EffectCb = (
 ) => void;
 
 export const EffectMap: {
-  [id: string]: EffectAc;
+  [id: string]: EffectFunc;
 } = {
   '001': function (s, t, all) {
     // 伤害
