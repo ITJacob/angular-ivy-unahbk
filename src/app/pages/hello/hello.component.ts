@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { GameManager } from '../../control/gameManager';
 import { PackageComponent } from '../package/package.component';
 import { PlayerComponent } from '../player/player.component';
 
@@ -12,12 +13,15 @@ export class HelloComponent implements OnInit {
   @ViewChild('enemy') enemy: PlayerComponent;
   @ViewChild('package') package: PackageComponent;
 
-  ngOnInit(): void {
-    // throw new Error('Method not implemented.');
+  game: GameManager;
+
+  async ngOnInit() {
+    this.game = new GameManager();
+    await this.game.init();
+    // this.package.random();
   }
-  random() {
-    this.player.random();
-    this.enemy.random();
-    this.package.random();
+
+  async random() {
+    this.game.start('0', '1');
   }
 }

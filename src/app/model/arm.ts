@@ -1,9 +1,10 @@
+import { IArmInfo } from '../interface/IInfo';
 import { IModel } from '../interface/IModel';
 
 export class Arm implements IModel {
   info: { name: string };
-  
-  constructor(params: Arm['info']) {
+
+  constructor(params: IArmInfo) {
     this.info = params;
   }
 }

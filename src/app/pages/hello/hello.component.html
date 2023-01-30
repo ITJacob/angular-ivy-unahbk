@@ -4,5 +4,5 @@
 <app-arms #arms></app-arms>
 <app-package #package></app-package>
 <app-skills #skills></app-skills> -->
-<app-player #player team="己方"></app-player>
-<app-player #enemy team="敌方"></app-player>
+<app-player [player]="game?.player" team="己方"></app-player>
+<app-player [player]="game?.match" team="敌方"></app-player>

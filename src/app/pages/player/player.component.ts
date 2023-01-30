@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PlayerControl } from '../../control/playerControl';
+import { Player } from '../../control/player';
 import { HeroControl } from '../../control/heroControl';
 
 @Component({
@@ -9,14 +9,9 @@ import { HeroControl } from '../../control/heroControl';
 })
 export class PlayerComponent implements OnInit {
   @Input() team: string;
-  player: PlayerControl;
+  @Input() player: Player;
 
   ngOnInit() {
-    this.player = new PlayerControl('test');
-  }
-
-  async random() {
-    await this.player.init();
   }
 
   setTarget(t: HeroControl) {}

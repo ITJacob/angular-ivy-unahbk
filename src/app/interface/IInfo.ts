@@ -61,6 +61,11 @@ export interface ISkillInfo extends IInfo, IValuableItem {
   trdValue: number; // "三级效果数值"
 }
 
+// 装备
+export interface IArmInfo extends IInfo, IValuableItem {
+  // groupInfoId: string; // 所属的阵营
+}
+
 /*
 // 游戏逻辑层面的静态常规属性，
 export interface ICommonInfo {

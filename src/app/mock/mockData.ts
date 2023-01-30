@@ -1,6 +1,4 @@
-import { IHeroInfo } from '../interface/IInfo';
-import { ISettingData } from '../model/player';
-import { random } from '../utils/tools';
+import { IUserData } from '../interface/IData';
 
 export function getData<T>(key: string, id: string): Promise<T> {
   return new Promise((res) => {
@@ -10,44 +8,25 @@ export function getData<T>(key: string, id: string): Promise<T> {
   });
 }
 
-const PLAYER_SETTING = function (_id: string) {
-  const result: ISettingData[] = [];
-  let i = 1;
-  while (i < 6) {
-    const [strength, dexterity, vitality, intelligence] = random(4, 10, 6);
-    const heroInfo: IHeroInfo = {
-      name: '英雄_' + i,
-      desc: '随机介绍····',
-      strength,
-      dexterity,
-      vitality,
-      intelligence,
-      talent: '',
-      talentDesc: '',
-      talentMapId: '001',
-    };
-    const s: ISettingData = {
+function USER(_id: string) {
+  const heros = [];
+  let i = 0;
+  while (i < 5) {
+    const s = {
       level: 0,
-      teamPosition: i,
-      heroInfo,
-      skillInfos: getSkills(5),
-      armInfos: [],
+      teamPosition: i + 1,
+      heroInfoId: Number(_id) * 5 + i,
+      skillInfos: new Array(5),
+      armInfos: new Array(5),
     };
 
-    result.push(s);
+    heros.push(s);
     i++;
   }
-  return result;
-};
-
-function getSkills(num: number) {
-  const s = localStorage.getItem('skill');
-  let res = [];
-  if (s) {
-    const all = JSON.parse(s);
-    res = all.sort(() => 0.5 - Math.random()).slice(0, num);
-  }
-  return res;
+  return {
+    nickname: '玩家' + _id,
+    heros,
+  } as IUserData;
 }
 
 // const HERO: IHeroDataList = {
@@ -69,5 +48,5 @@ function getSkills(num: number) {
 
 const data = {
   // HERO,
-  PLAYER_SETTING,
+  USER,
 };
