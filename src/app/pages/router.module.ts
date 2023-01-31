@@ -9,6 +9,7 @@ import { HeroComponent } from './hero/hero.component';
 import { PackageComponent } from './package/package.component';
 import { ArmsComponent } from './arms/arms.component';
 import { PlayerComponent } from './player/player.component';
+import { GameService } from './game/game.service';
 
 const routes: Routes = [
   { path: '', component: GameComponent },
@@ -32,7 +33,7 @@ const routes: Routes = [
     PackageComponent,
     ArmsComponent,
   ],
-  providers: [SettingService],
+  providers: [SettingService, GameService],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

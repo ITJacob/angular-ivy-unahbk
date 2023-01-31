@@ -8,5 +8,4 @@ export class GameService {
   constructor() {
     this.game = new GameManager();
   }
-
 }

@@ -18,8 +18,8 @@ export class GameComponent implements OnInit {
   game: GameManager;
 
   async ngOnInit() {
-    // this.game = this.service.game;
-    // await this.game.init();
+    this.game = this.service.game;
+    await this.game.init();
     // this.package.random();
   }
 
