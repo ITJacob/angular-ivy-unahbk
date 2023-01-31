@@ -48,6 +48,7 @@ function HeroGen() {
       talentMapId: '001',
     };
     result.push(heroInfo);
+    i++;
   }
   return result;
 }
