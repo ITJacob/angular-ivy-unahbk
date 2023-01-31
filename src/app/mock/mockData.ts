@@ -16,8 +16,8 @@ function USER(_id: string) {
       level: 0,
       teamPosition: i + 1,
       heroInfoId: Number(_id) * 5 + i,
-      skillInfos: new Array(5),
-      armInfos: new Array(5),
+      skillInfoIds: new Array(5),
+      armInfoIds: new Array(5),
     };
 
     heros.push(s);

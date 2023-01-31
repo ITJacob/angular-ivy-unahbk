@@ -4,6 +4,7 @@ import { random } from '../utils/tools';
 const info = {
   HERO: [],
   SKILL: [],
+  ARM: [],
 };
 
 export function checkInfo<T>(key: string): Promise<T> {

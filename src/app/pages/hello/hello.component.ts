@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GameManager } from '../../control/gameManager';
+import { Player } from '../../control/player';
 import { PackageComponent } from '../package/package.component';
-import { PlayerComponent } from '../player/player.component';
 
 @Component({
   selector: 'app-hello',
@@ -9,8 +9,8 @@ import { PlayerComponent } from '../player/player.component';
   styles: [`h1 { font-family: Lato; }`],
 })
 export class HelloComponent implements OnInit {
-  @ViewChild('player') player: PlayerComponent;
-  @ViewChild('enemy') enemy: PlayerComponent;
+  player: Player;
+  match: Player;
   @ViewChild('package') package: PackageComponent;
 
   game: GameManager;
@@ -22,6 +22,8 @@ export class HelloComponent implements OnInit {
   }
 
   async random() {
-    this.game.start('0', '1');
+    await this.game.start('0', '1');
+    this.player = this.game.player;
+    this.match = this.game.match;
   }
 }
