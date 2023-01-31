@@ -2,22 +2,24 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GameManager } from '../../control/gameManager';
 import { Player } from '../../control/player';
 import { PackageComponent } from '../package/package.component';
+import { GameService } from './game.service';
 
 @Component({
-  selector: 'app-hello',
-  templateUrl: './hello.component.html',
+  selector: 'app-game',
+  templateUrl: './game.component.html',
   styles: [`h1 { font-family: Lato; }`],
 })
-export class HelloComponent implements OnInit {
+export class GameComponent implements OnInit {
   player: Player;
   match: Player;
   @ViewChild('package') package: PackageComponent;
 
+  constructor(private service: GameService) {}
   game: GameManager;
 
   async ngOnInit() {
-    this.game = new GameManager();
-    await this.game.init();
+    // this.game = this.service.game;
+    // await this.game.init();
     // this.package.random();
   }
 

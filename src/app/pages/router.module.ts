@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { SettingComponent } from './setting/setting.component';
-import { HelloComponent } from './hello/hello.component';
+import { GameComponent } from './game/game.component';
 import { SettingService } from './setting/setting.service';
 import { CommonModule } from '@angular/common';
 import { SkillsComponent } from './skills/skills.component';
@@ -11,9 +11,9 @@ import { ArmsComponent } from './arms/arms.component';
 import { PlayerComponent } from './player/player.component';
 
 const routes: Routes = [
-  { path: '', component: HelloComponent },
+  { path: '', component: GameComponent },
   { path: 'setting', component: SettingComponent },
-  { path: '**', component: HelloComponent },
+  { path: '**', component: GameComponent },
 ];
 
 @NgModule({
@@ -26,7 +26,7 @@ const routes: Routes = [
   declarations: [
     PlayerComponent,
     SettingComponent,
-    HelloComponent,
+    GameComponent,
     SkillsComponent,
     HeroComponent,
     PackageComponent,
