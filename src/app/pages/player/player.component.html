@@ -3,8 +3,8 @@
   class="hero-card"
   *ngFor="let item of player?.heroControls; let index = index"
 >
-  <app-hero [hero]="item.hero"></app-hero>
+  <app-hero [control]="item"></app-hero>
   <div>
-    <app-skills [skills]="item.skills"></app-skills>
+    <app-skills [control]="item"></app-skills>
   </div>
 </div>

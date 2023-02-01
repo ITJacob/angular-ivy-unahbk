@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { HeroControl } from '../../control/heroControl';
 import { Skill } from '../../model/skill';
 import { SettingService } from '../setting/setting.service';
 
@@ -8,7 +9,8 @@ import { SettingService } from '../setting/setting.service';
   styles: [`h1 { font-family: Lato; }`],
 })
 export class SkillsComponent implements OnInit {
-  @Input() skills: Skill[] = [];
+  @Input() control: HeroControl;
+
   selected: Skill;
   constructor() {}
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Hero } from '../../model/hero';
+import { HeroControl } from '../../control/heroControl';
 
 @Component({
   selector: 'app-hero',
@@ -7,7 +7,7 @@ import { Hero } from '../../model/hero';
   styles: [`h1 { font-family: Lato; }`],
 })
 export class HeroComponent implements OnInit {
-  @Input() hero: Hero = {} as any;
+  @Input() control: HeroControl;
 
   constructor() {}
 

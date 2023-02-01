@@ -1,18 +1,18 @@
 <div>
-  名称：{{ hero.info?.name }}<br />
+  名称：{{ control?.hero.info.name }}<br />
   属性：<br />&nbsp;&nbsp;
-  <span>力量：{{ hero.info?.strength }}&nbsp;</span>
-  <span>敏捷：{{ hero.info?.dexterity }}&nbsp;</span>
-  <span>耐力：{{ hero.info?.vitality }}&nbsp;</span>
-  <span>智力：{{ hero.info?.intelligence }}</span>
+  <span>力量：{{ control?.hero.info.strength }}&nbsp;</span>
+  <span>敏捷：{{ control?.hero.info.dexterity }}&nbsp;</span>
+  <span>耐力：{{ control?.hero.info.vitality }}&nbsp;</span>
+  <span>智力：{{ control?.hero.info.intelligence }}</span>
   <br />
-  <!-- 天赋：{{ hero.talent }} -->
+  <!-- 天赋：{{ control?.hero.talent }} -->
 </div>
 <div>---战斗---</div>
 <div>
-  血量：{{ hero.hp }}<br />
-  能量：{{ hero.mp }}<br />
-  <!-- Buff：{{ hero.buffs }}<br /> -->
-  <!-- 其他：{{ hero | json}} -->
+  血量：{{ control?.hero.hp }}<br />
+  能量：{{ control?.hero.mp }}<br />
+  <!-- Buff：{{ control?.hero.buffs }}<br /> -->
+  <!-- 其他：{{ control?.hero | json}} -->
 </div>
 

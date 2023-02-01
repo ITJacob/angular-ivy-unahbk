@@ -1,5 +1,5 @@
 <div>
-  <ng-container *ngFor="let item of skills; let index = index">
+  <ng-container *ngFor="let item of control?.skills; let index = index">
     <button (click)="active(item)">{{ item?.info.name }}</button>&nbsp;
   </ng-container>
 </div>
