@@ -19,13 +19,16 @@ export class GameComponent implements OnInit {
 
   async ngOnInit() {
     this.game = this.service.game;
-    await this.game.init();
     // this.package.random();
   }
 
   async random() {
-    await this.game.start('0', '1');
+    await this.game.init('0', '1');
     this.player = this.game.player;
     this.match = this.game.match;
+  }
+
+  async start() {
+    await this.game.start();
   }
 }
