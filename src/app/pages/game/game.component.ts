@@ -28,7 +28,7 @@ export class GameComponent implements OnInit {
     this.match = this.game.match;
   }
 
-  async start() {
-    await this.game.start();
+  start() {
+    this.game.start();
   }
 }

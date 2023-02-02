@@ -40,7 +40,18 @@ export class GameManager {
     return new Player(setting);
   }
 
-  addBehavior(hero: HeroControl, skill: Skill) {}
+  addBehavior(hero: HeroControl, skill: Skill) {
+    this.behaviors.push(
+      new Behavior(hero, skill, [
+        this.player.heroControls,
+        this.match.heroControls,
+      ])
+    );
+  }
 
-  async start() {}
+  start() {
+    this.behaviors.forEach((b) => {
+      b.active();
+    });
+  }
 }

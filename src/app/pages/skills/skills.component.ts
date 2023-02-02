@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HeroControl } from '../../control/heroControl';
 import { Skill } from '../../model/skill';
+import { GameService } from '../game/game.service';
 import { SettingService } from '../setting/setting.service';
 
 @Component({
@@ -12,13 +13,13 @@ export class SkillsComponent implements OnInit {
   @Input() control: HeroControl;
 
   selected: Skill;
-  constructor() {}
+  constructor(private service: GameService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   active(skill: any) {
     console.log('准备施法：', skill.name);
+    this.service.game.addBehavior(this.control, skill);
   }
 
   random() {}

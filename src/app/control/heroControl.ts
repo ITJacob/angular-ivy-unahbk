@@ -24,6 +24,13 @@ export class HeroControl {
     this.arms = arms.map((a) => new Arm(a));
   }
 
+  checkSkill(skill: Skill) {
+    // TODO:
+    // check 英雄当前状态，eg: 晕眩、沉默、吟唱，
+    // check 技能的条件是否满足，eg: 装备武器、存在尸体
+    return this.hero.mp > skill.info.mpCost;
+  }
+
   initTalent(id: string) {
     // this.talent = new Talent(id);
   }

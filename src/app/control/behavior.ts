@@ -3,32 +3,36 @@ import { EffectFunc, EffectMap } from './effectMap';
 import { HeroControl } from './heroControl';
 
 export class Behavior {
-  skill: Skill;
   effects: EffectFunc[];
-  constructor(public actor: HeroControl) {}
-
-  checkActive(skill: Skill) {
-    // TODO:
-    // check 英雄当前状态，eg: 晕眩、沉默、吟唱，
-    // check 技能的条件是否满足，eg: 装备武器、存在尸体
-    return this.actor.hero.mp > skill.info.mpCost;
+  constructor(
+    private actor: HeroControl,
+    private skill: Skill,
+    private all: [HeroControl[], HeroControl[]]
+  ) {
+    this.init();
   }
 
-  setBehave(skill: Skill) {
-    this.skill = skill;
-
+  init() {
+    const effectId = this.skill.info.mainEffectInfoId;
     // TODO
     // 暂时默认都是直接伤害
     this.effects = [EffectMap['001']];
   }
 
-  active(target: HeroControl, all: [HeroControl[], HeroControl[]]) {
-    if (!this.checkActive(this.skill)) {
-      return false;
-    }
+  active() {
+    // if (!this.check(this.skill)) {
+    //   return false;
+    // }
+    const target = this.findTarget(this.all);
 
     this.effects.forEach((effect) => {
-      effect.call(this.skill, this.actor, target, all);
+      effect.call(this.skill, this.actor, target, this.all);
     });
+  }
+
+  private findTarget(all: [HeroControl[], HeroControl[]]) {
+    // TODO:
+    // 目前主打队首
+    return all[1][0];
   }
 }
