@@ -5,7 +5,7 @@ import { HeroControl } from './heroControl';
 export class Behavior {
   effects: EffectFunc[];
   constructor(
-    private actor: HeroControl,
+    public actor: HeroControl,
     private skill: Skill,
     private all: [HeroControl[], HeroControl[]]
   ) {
@@ -24,6 +24,11 @@ export class Behavior {
     //   return false;
     // }
     const target = this.findTarget(this.all);
+    const checkRes = this.actor.activeCheck(this.skill);
+    if (!checkRes) {
+      console.log('施法失败');
+      return;
+    }
 
     this.effects.forEach((effect) => {
       effect.call(this.skill, this.actor, target, this.all);

@@ -40,6 +40,10 @@ export class GameManager {
     return new Player(setting);
   }
 
+  beforeRound(){}
+
+  afterRound(){}
+
   addBehavior(hero: HeroControl, skill: Skill) {
     this.behaviors.push(
       new Behavior(hero, skill, [
@@ -49,9 +53,15 @@ export class GameManager {
     );
   }
 
+  private beforeStart() {
+    // TODO: order behaviors
+  }
+  
   start() {
+    this.beforeStart();
     this.behaviors.forEach((b) => {
       b.active();
+      b.actor.buffCheck();
     });
   }
 }
