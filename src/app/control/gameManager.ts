@@ -1,11 +1,10 @@
 import { IUserData } from '../interface/IData';
-import { IArmInfo, IHeroInfo, ISkillInfo } from '../interface/IInfo';
 import { getData } from '../mock/mockData';
-import { checkInfo, getInfo, getInfos } from '../mock/mockInfo';
+import { checkInfo } from '../mock/mockInfo';
 import { Skill } from '../model/skill';
 import { Behavior } from './behavior';
 import { HeroControl } from './heroControl';
-import { ISetting, Player } from './player';
+import { Player } from './player';
 
 export class GameManager {
   player: Player;
@@ -21,28 +20,18 @@ export class GameManager {
     await checkInfo('ARM');
     // get player 信息
     const userData = await getData<IUserData>('USER', userId);
-    this.player = this.newPlayer(userData.heros);
+    this.player = new Player(userData.heros);
     // get match 信息
     const matchData = await getData<IUserData>('USER', matchId);
-    this.match = this.newPlayer(matchData.heros);
+    this.match = new Player(matchData.heros);
   }
 
-  private newPlayer(herosData: IUserData['heros']) {
-    const setting: ISetting[] = herosData.map(
-      ({ level, teamPosition, heroInfoId, skillInfoIds, armInfoIds }) => ({
-        level,
-        teamPosition,
-        heroInfo: getInfo<IHeroInfo>('HERO', heroInfoId),
-        skillInfos: getInfos<ISkillInfo>('SKILL', skillInfoIds),
-        armInfos: getInfos<IArmInfo>('ARM', armInfoIds),
-      })
-    );
-    return new Player(setting);
+  beforeRound() {
+    this.player.beforeRound();
+    this.match.beforeRound();
   }
 
-  beforeRound(){}
-
-  afterRound(){}
+  afterRound() {}
 
   addBehavior(hero: HeroControl, skill: Skill) {
     this.behaviors.push(
@@ -56,7 +45,7 @@ export class GameManager {
   private beforeStart() {
     // TODO: order behaviors
   }
-  
+
   start() {
     this.beforeStart();
     this.behaviors.forEach((b) => {
