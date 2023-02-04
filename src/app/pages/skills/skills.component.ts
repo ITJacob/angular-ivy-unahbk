@@ -19,7 +19,7 @@ export class SkillsComponent implements OnInit {
 
   active(skill: any) {
     console.log('准备施法：', skill.name);
-    this.service.game.addBehavior(this.control, skill);
+    this.service.game.player.addBehavior(this.control, skill);
   }
 
   random() {}

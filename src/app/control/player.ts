@@ -1,6 +1,8 @@
 import { IUserData } from '../interface/IData';
 import { IArmInfo, IHeroInfo, ISkillInfo } from '../interface/IInfo';
 import { getInfo, getInfos } from '../mock/mockInfo';
+import { Skill } from '../model/skill';
+import { Behavior } from './behavior';
 import { HeroControl } from './heroControl';
 
 export interface ISetting {
@@ -13,6 +15,7 @@ export interface ISetting {
 
 export class Player {
   heroControls: HeroControl[] = [];
+  behaviors: Behavior[] = [];
 
   constructor(private herosData: IUserData['heros']) {
     this.init();
@@ -37,5 +40,11 @@ export class Player {
     this.heroControls.forEach((h) => {
       h.hero.mp += h.hero.mpSpeed;
     });
+  }
+
+  addBehavior(hero: HeroControl, skill: Skill) {
+    this.behaviors.push(
+      new Behavior(hero, skill)
+    );
   }
 }
