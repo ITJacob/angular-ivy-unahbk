@@ -37,14 +37,13 @@ export class Player {
   }
 
   beforeRound() {
+    this.behaviors = [];
     this.heroControls.forEach((h) => {
       h.hero.mp += h.hero.mpSpeed;
     });
   }
 
   addBehavior(hero: HeroControl, skill: Skill) {
-    this.behaviors.push(
-      new Behavior(hero, skill)
-    );
+    this.behaviors.push(new Behavior(hero, skill));
   }
 }

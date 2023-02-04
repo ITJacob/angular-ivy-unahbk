@@ -20,7 +20,7 @@ export class Hero implements IModel {
     this.init();
   }
 
-  init() {
+  private init() {
     const { strength, dexterity, intelligence, vitality } = this.info;
     this.hp += vitality * 5;
     this.mpSpeed += intelligence * 0.05;

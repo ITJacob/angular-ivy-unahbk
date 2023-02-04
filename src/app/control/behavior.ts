@@ -1,19 +1,12 @@
 import { Skill } from '../model/skill';
-import { EffectFunc, EffectMap } from './effectMap';
 import { HeroControl } from './heroControl';
 
 export class Behavior {
-  effects: EffectFunc[];
   constructor(public actor: HeroControl, private skill: Skill) {
     this.init();
   }
 
-  init() {
-    const effectId = this.skill.info.mainEffectInfoId;
-    // TODO
-    // 暂时默认都是直接伤害
-    this.effects = [EffectMap['001']];
-  }
+  init() {}
 
   active(all: [HeroControl[], HeroControl[]]) {
     const target = this.findTarget(all);
@@ -24,7 +17,7 @@ export class Behavior {
       return;
     }
 
-    this.effects.forEach((effect) => {
+    this.skill.effects.forEach((effect) => {
       effect.call(this.skill, this.actor, target, all);
     });
   }
