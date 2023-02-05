@@ -2,7 +2,7 @@ import { Skill } from '../model/skill';
 import { HeroControl } from './heroControl';
 
 export class Behavior {
-  constructor(public actor: HeroControl, private skill: Skill) {
+  constructor(public actor: HeroControl, public skill: Skill) {
     this.init();
   }
 

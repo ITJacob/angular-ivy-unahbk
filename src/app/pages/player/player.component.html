@@ -1,4 +1,10 @@
 <h1>{{ team }}</h1>
+<div>
+  <span>本局行动：</span>
+  <span *ngFor="let item of player?.behaviors; let index = index"
+    >{{ item.actor.hero.info.name }}: {{ item.skill.info.name }};&nbsp;</span
+  >
+</div>
 <div
   class="hero-card"
   *ngFor="let item of player?.heroControls; let index = index"
