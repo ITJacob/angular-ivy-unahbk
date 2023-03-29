@@ -18,14 +18,15 @@ export class GameManager {
   }
 
   async init(userId: string, matchId: string) {
+    // 系统初始化
     await this.service.init();
     // get player 信息
-    const userData = await getData<IUserData>('USER', userId);
+    const userData = await this.service.getUserData(userId);
     this.player = new Player(userData.heros);
     // get match 信息
-    const matchData = await getData<IUserData>('USER', matchId);
+    const matchData = await this.service.getUserData(matchId);
     this.match = new Player(matchData.heros);
-    this.eventBus = new BehaviorSubject({ type: 'start' });
+
     this.newRound();
   }
 
