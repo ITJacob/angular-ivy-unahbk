@@ -1,38 +1,49 @@
 import { Action } from './action';
-import { GameRender } from './gameRender';
-import { GameService } from './gameService';
+import { GameRender, IGameRenderConstructor } from './gameRender';
+import { GameService, IGameServiceConstructor } from './gameService';
 import { Opreation } from './opreation';
 import { Player } from './player';
 
 export class GameManager {
+  private service: GameService;
+  private render: GameRender;
   player: Player;
   match: Player;
 
   opreations: Opreation[] = [];
   actions: Action[] = [];
 
-  constructor(private service: GameService, private render: GameRender) {}
+  constructor(
+    s: IGameServiceConstructor,
+    r: IGameRenderConstructor,
+    gameId: string
+  ) {
+    this.service = new s(gameId);
+    this.render = new r();
+  }
 
-  async init(userId: string, matchId: string) {
-    // 系统初始化
-    await this.service.init();
+  async init() {
     // get player 信息
-    const userData = await this.service.getUserData(userId);
-    this.player = new Player(userData, this.render);
-    // get match 信息
-    const matchData = await this.service.getUserData(matchId);
-    this.match = new Player(matchData, this.render);
+    const [playerData, matchData] = await this.service.getGameData();
+    
+    this.player = new Player(playerData);
+    this.match = new Player(matchData);
+
+    // 界面初始化
+    await this.render.init(this.player, this.match);
   }
 
   start() {
     this.player.init();
     this.match.init();
-    this.render.start(this.player, this.match);
+    this.render.start();
     this.newRound();
   }
 
   private async newRound() {
     this.player.beforeRound();
+    const ops = await this.player.waitOpreations();
+    this.service;
   }
 
   private endRound() {

@@ -1,15 +1,23 @@
 import { IUserData } from './IData';
-import { Player } from './player';
+import { Opreation } from './opreation';
+
+export interface IGameServiceConstructor {
+  new (gameId: string): GameService;
+}
 
 export abstract class GameService {
-  /**
-   * 初始化所有info信息
-   * await checkInfo('HERO');
-   * await checkInfo('SKILL');
-   * await checkInfo('ARM');
-   */
-  abstract init(): Promise<void>;
+  // 用户id
+  protected userId: string;
+
+  // 游戏对局的id
+  constructor(protected gameId: string) {}
 
   // 获取用户数据
-  abstract getUserData(id: string): Promise<IUserData>;
+  abstract getGameData(): Promise<[IUserData, IUserData]>;
+
+  // 同步己方操作
+  abstract updateOpreations(ops: Opreation[]): Promise<boolean>;
+
+  // 获取操作列表
+  abstract getAllOpreations(): Promise<Opreation[]>;
 }

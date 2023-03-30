@@ -5,6 +5,7 @@ import { Behavior } from './behavior';
 import { GameRender } from './gameRender';
 import { HeroControl } from './heroControl';
 import { IUserData } from './IData';
+import { Opreation } from './opreation';
 
 export interface ISetting {
   level: number;
@@ -18,29 +19,15 @@ export class Player {
   heroControls: HeroControl[] = [];
   behaviors: Behavior[] = [];
 
-  constructor(private userData: IUserData, private render: GameRender) {
-    this.init();
-  }
+  constructor(private userData: IUserData) {}
 
-  init() {
-    const settings: ISetting[] = this.userData.heros.map(
-      ({ level, teamPosition, heroInfoId, skillInfoIds, armInfoIds }) => ({
-        level,
-        teamPosition,
-        heroInfo: getInfo<IHeroInfo>('HERO', heroInfoId),
-        skillInfos: getInfos<ISkillInfo>('SKILL', skillInfoIds),
-        armInfos: getInfos<IArmInfo>('ARM', armInfoIds),
-      })
-    );
-    settings.forEach(({ heroInfo, skillInfos, armInfos }) => {
-      this.heroControls.push(new HeroControl(heroInfo, skillInfos, armInfos));
-    });
-  }
+  init() {}
 
-  beforeRound() {
-    this.behaviors = [];
-    this.heroControls.forEach((h) => {
-      h.hero.mp += h.hero.mpSpeed;
+  beforeRound() {}
+
+  waitOpreations() {
+    return new Promise((resolve) => {
+      resolve([new Opreation()]);
     });
   }
 
