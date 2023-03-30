@@ -25,7 +25,7 @@ export class GameManager {
   async init() {
     // get player 信息
     const [playerData, matchData] = await this.service.getGameData();
-    
+
     this.player = new Player(playerData);
     this.match = new Player(matchData);
 
@@ -42,6 +42,9 @@ export class GameManager {
 
   private async newRound() {
     this.player.beforeRound();
+
+    // TODO: Here!!!
+
     const ops = await this.player.waitOpreations();
     this.service;
   }
