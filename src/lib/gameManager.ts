@@ -21,7 +21,12 @@ export class GameManager {
     // get match 信息
     const matchData = await this.service.getUserData(matchId);
     this.match = new Player(matchData);
+  }
 
+  async start() {
+    this.player.init();
+    this.match.init();
+    this.service.start(this.player, this.match);
     this.newRound();
   }
 
@@ -32,6 +37,7 @@ export class GameManager {
 
   private endRound() {
     // TODO: check winner
+    this.newRound();
   }
 
   private beforeStart() {
@@ -42,13 +48,12 @@ export class GameManager {
     this.eventBus.next({ type: 'start' });
   }
 
-  start() {
+  go() {
     this.beforeStart();
     this.behaviors.forEach((b) => {
       this.operate(b);
     });
     this.endRound();
-    this.newRound();
   }
 
   async operate(b: Behavior) {
