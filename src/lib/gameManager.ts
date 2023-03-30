@@ -1,31 +1,26 @@
-import { IUserData } from '../interface/IData';
-import { getData } from '../mock/mockData';
-import { checkInfo } from '../mock/mockInfo';
-import { Action } from './Action';
-import { Behavior } from './behavior';
+import { Action } from './action';
 import { GameService } from './gameService';
+import { Opreation } from './opreation';
 import { Player } from './player';
 
 export class GameManager {
-  service: GameService;
   player: Player;
   match: Player;
-  behaviors: Behavior[] = [];
+
+  opreations: Opreation[] = [];
   actions: Action[] = [];
 
-  constructor(service: GameService) {
-    this.service = service;
-  }
+  constructor(private service: GameService) {}
 
   async init(userId: string, matchId: string) {
     // 系统初始化
     await this.service.init();
     // get player 信息
     const userData = await this.service.getUserData(userId);
-    this.player = new Player(userData.heros);
+    this.player = new Player(userData);
     // get match 信息
     const matchData = await this.service.getUserData(matchId);
-    this.match = new Player(matchData.heros);
+    this.match = new Player(matchData);
 
     this.newRound();
   }
@@ -33,13 +28,10 @@ export class GameManager {
   private newRound() {
     this.player.beforeRound();
     this.match.beforeRound();
-    this.eventBus.next({ type: 'newRound' });
   }
 
   private endRound() {
     // TODO: check winner
-    this.isPlaying = false;
-    this.eventBus.next({ type: 'endRound' });
   }
 
   private beforeStart() {
