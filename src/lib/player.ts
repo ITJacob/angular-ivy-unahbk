@@ -2,6 +2,7 @@ import { IArmInfo, IHeroInfo, ISkillInfo } from '../interface/IInfo';
 import { getInfo, getInfos } from '../mock/mockInfo';
 import { Skill } from '../model/skill';
 import { Behavior } from './behavior';
+import { GameRender } from './gameRender';
 import { HeroControl } from './heroControl';
 import { IUserData } from './IData';
 
@@ -17,7 +18,7 @@ export class Player {
   heroControls: HeroControl[] = [];
   behaviors: Behavior[] = [];
 
-  constructor(private userData: IUserData) {
+  constructor(private userData: IUserData, private render: GameRender) {
     this.init();
   }
 

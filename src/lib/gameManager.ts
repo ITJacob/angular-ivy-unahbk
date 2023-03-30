@@ -1,4 +1,5 @@
 import { Action } from './action';
+import { GameRender } from './gameRender';
 import { GameService } from './gameService';
 import { Opreation } from './opreation';
 import { Player } from './player';
@@ -10,29 +11,28 @@ export class GameManager {
   opreations: Opreation[] = [];
   actions: Action[] = [];
 
-  constructor(private service: GameService) {}
+  constructor(private service: GameService, private render: GameRender) {}
 
   async init(userId: string, matchId: string) {
     // 系统初始化
     await this.service.init();
     // get player 信息
     const userData = await this.service.getUserData(userId);
-    this.player = new Player(userData);
+    this.player = new Player(userData, this.render);
     // get match 信息
     const matchData = await this.service.getUserData(matchId);
-    this.match = new Player(matchData);
+    this.match = new Player(matchData, this.render);
   }
 
-  async start() {
+  start() {
     this.player.init();
     this.match.init();
-    this.service.start(this.player, this.match);
+    this.render.start(this.player, this.match);
     this.newRound();
   }
 
-  private newRound() {
+  private async newRound() {
     this.player.beforeRound();
-    this.match.beforeRound();
   }
 
   private endRound() {
@@ -41,16 +41,14 @@ export class GameManager {
   }
 
   private beforeStart() {
-    this.isPlaying = true;
     // TODO: waiting match operate
-    this.behaviors = [...this.player.behaviors, ...this.match.behaviors];
+    this.opreations = [...this.player.behaviors, ...this.match.behaviors];
     // TODO: order behaviors
-    this.eventBus.next({ type: 'start' });
   }
 
   go() {
     this.beforeStart();
-    this.behaviors.forEach((b) => {
+    this.opreations.forEach((b) => {
       this.operate(b);
     });
     this.endRound();

@@ -12,7 +12,4 @@ export abstract class GameService {
 
   // 获取用户数据
   abstract getUserData(id: string): Promise<IUserData>;
-
-  // 渲染界面
-  abstract start(player: Player, match: Player): void;
 }
