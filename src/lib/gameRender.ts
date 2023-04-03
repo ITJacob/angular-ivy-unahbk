@@ -1,3 +1,5 @@
+import { Action } from './action';
+import { Opreation } from './opreation';
 import { Player } from './player';
 
 export interface IGameRenderConstructor {
@@ -20,5 +22,11 @@ export abstract class GameRender {
   abstract init(player: Player, match: Player): Promise<void>;
 
   // 战斗开始
-  abstract start(): void;
+  abstract start(): Promise<void>;
+
+  // 等待玩家操作
+  abstract waitOpreations(): Promise<Opreation[]>;
+
+  // 执行战斗动画
+  abstract play(action: Action): Promise<void>;
 }

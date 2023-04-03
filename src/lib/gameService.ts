@@ -16,7 +16,7 @@ export abstract class GameService {
   abstract getGameData(): Promise<[IUserData, IUserData]>;
 
   // 同步己方操作
-  abstract updateOpreations(ops: Opreation[]): Promise<boolean>;
+  abstract uploadOpreations(ops: Opreation[]): Promise<boolean>;
 
   // 获取操作列表
   abstract getAllOpreations(): Promise<Opreation[]>;

@@ -11,7 +11,6 @@ export class GameManager {
   match: Player;
 
   opreations: Opreation[] = [];
-  actions: Action[] = [];
 
   constructor(
     s: IGameServiceConstructor,
@@ -43,33 +42,37 @@ export class GameManager {
   private async newRound() {
     this.player.beforeRound();
 
-    // TODO: Here!!!
+    // 玩家点 准备就绪 后执行
+    const ops = await this.render.waitOpreations();
+    await this.service.uploadOpreations(ops);
+    // 循环遍历，获得对战双方的操作
+    this.opreations = await this.service.getAllOpreations();
+    // 进入执行阶段
+    this.fight();
+  }
 
-    const ops = await this.player.waitOpreations();
-    this.service;
+  private beforeStart() {
+    // buff check
+  }
+
+  private async fight() {
+    this.beforeStart();
+
+    for await (const opt of this.opreations) {
+      await this.operate(opt);
+    }
+
+    this.endRound();
+  }
+
+  private async operate(opt: Opreation) {
+    const action = new Action(opt);
+    action.active(this.player, this.match);
+    await this.render.play(action);
   }
 
   private endRound() {
     // TODO: check winner
     this.newRound();
-  }
-
-  private beforeStart() {
-    // TODO: waiting match operate
-    this.opreations = [...this.player.behaviors, ...this.match.behaviors];
-    // TODO: order behaviors
-  }
-
-  go() {
-    this.beforeStart();
-    this.opreations.forEach((b) => {
-      this.operate(b);
-    });
-    this.endRound();
-  }
-
-  async operate(b: Behavior) {
-    b.active([this.player.heroControls, this.match.heroControls]);
-    b.actor.buffCheck();
-  }
+  } 
 }
