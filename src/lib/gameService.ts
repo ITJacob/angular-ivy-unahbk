@@ -12,6 +12,13 @@ export abstract class GameService {
   // 游戏对局的id
   constructor(protected gameId: string) {}
 
+  /**
+   * 初始化所有info信息
+   * await checkInfo('HERO');
+   * await checkInfo('SKILL');
+   * await checkInfo('ARM');
+   */
+
   // 获取用户数据
   abstract getGameData(): Promise<[IUserData, IUserData]>;
 

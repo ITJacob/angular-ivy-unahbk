@@ -10,12 +10,6 @@ export abstract class GameRender {
   protected player: Player;
   protected match: Player;
 
-  /**
-   * 初始化所有info信息
-   * await checkInfo('HERO');
-   * await checkInfo('SKILL');
-   * await checkInfo('ARM');
-   */
   constructor() {}
 
   // 渲染战斗双方界面

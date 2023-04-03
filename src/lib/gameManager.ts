@@ -32,11 +32,9 @@ export class GameManager {
     await this.render.init(this.player, this.match);
   }
 
-  start() {
-    this.player.init();
-    this.match.init();
-    this.render.start();
-    this.newRound();
+  async start() {
+    await this.render.start();
+    await this.newRound();
   }
 
   private async newRound() {
@@ -48,31 +46,47 @@ export class GameManager {
     // 循环遍历，获得对战双方的操作
     this.opreations = await this.service.getAllOpreations();
     // 进入执行阶段
-    this.fight();
-  }
-
-  private beforeStart() {
-    // buff check
+    await this.fight();
   }
 
   private async fight() {
-    this.beforeStart();
+    await this.beforeFightEmit();
 
     for await (const opt of this.opreations) {
       await this.operate(opt);
     }
 
-    this.endRound();
+    await this.afterFightEmit();
+
+    await this.endRound();
   }
 
   private async operate(opt: Opreation) {
     const action = new Action(opt);
+    await this.beforeIndividualFightEmit(action);
     action.active(this.player, this.match);
     await this.render.play(action);
+    await this.afterIndividualFightEmit(action);
   }
 
-  private endRound() {
+  private async beforeFightEmit() {
+    // 回合开始时 buff check
+  }
+
+  private async beforeIndividualFightEmit(action: Action) {
+    // 每个角色开始时 buff check
+  }
+
+  private async afterIndividualFightEmit(action: Action) {
+    // 每个角色结束时 buff check
+  }
+
+  private async afterFightEmit() {
+    // 回合结束时 buff check
+  }
+
+  private async endRound() {
     // TODO: check winner
-    this.newRound();
+    await this.newRound();
   } 
 }
