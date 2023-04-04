@@ -1,3 +1,5 @@
+import { IHeroInfo, ISkillInfo, IArmInfo, IAccessoryInfo } from "./IInfo";
+
 export interface IData {
   _id: string;
 }
@@ -19,8 +21,13 @@ export interface IHeroData {
     intelligence: number; // 智力
     vitality: number; // 耐力
   };
-  teamPosition: number; // 队伍站位
   skillInfoIds: string[]; // 用户给英雄设置的技能
   armInfoIds: string[]; // 携带的装备
-  accessoriesInfoIds: string[]; // 携带的饰品
+  accessoryInfoIds: string[]; // 携带的饰品
+  teamPosition: number; // 队伍站位
+
+  heroInfo?: IHeroInfo;
+  skillInfos?: ISkillInfo[];
+  armInfos?: IArmInfo[];
+  accessoryInfos?: IAccessoryInfo[];
 }
